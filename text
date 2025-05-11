@@ -1,0 +1,5 @@
+# Từng trạng thái là một biến.
+
+# Miền giá trị là các phép di chuyển có thể thực hiện từ vị trí trống.
+
+# Ràng buộc là các phép di chuyển hợp lệ và không lặp lại trạng thái.
