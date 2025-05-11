@@ -359,6 +359,13 @@
 
     *Evaluation*
 
+        Thời gian thực thi thuật toán: 0.00377 giây
+        Bộ nhớ sử dụng: 0.03170 MB
+        Bộ nhớ tối đa: 0.04247 MB
+        Số bước thực hiện: 3
+
+        => Sử dụng thuật toán tương tự BFS nhưng với nhiều đầu vào
+        => Phù hợp cho bài toán không biết môi trường cụ thể, chỉ xác định được các Belief States là các đầu vào niềm tin
 
 
 # Constraint Satisfication Problem

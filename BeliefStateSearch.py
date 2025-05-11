@@ -1,5 +1,6 @@
 import copy
 from graphviz import Digraph
+import tracemalloc, timeit
 
 class Puzzle:
     def __init__(self, state, parent=None, move=None, depth=0, node_id=None):
@@ -122,7 +123,21 @@ state3 = Puzzle([[1, 2, 3], [4, 0, 6], [7, 5, 8]])
 
 initial_belief = BeliefState({state1, state2, state3})
 visualizer = GraphVisualizer()
+
+tracemalloc.start()
+start_time = timeit.default_timer()
+
 goal_node = belief_state_search(initial_belief, visualizer)
+
+end_time = timeit.default_timer()
+memory_used, peak_memory = tracemalloc.get_traced_memory()
+tracemalloc.stop()
+
+print(f"Thời gian thực thi thuật toán: {(end_time - start_time):.5f} giây")
+print(f"Bộ nhớ sử dụng: {memory_used / (1024 ** 2):.5f} MB")
+print(f"Bộ nhớ tối đa: {peak_memory / (1024 ** 2):.5f} MB")
+print("Số bước thực hiện:", len(goal_node.get_path()))
+
 
 if goal_node:
     print("Goal Node Found. Path to goal:")
