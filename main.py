@@ -38,8 +38,10 @@ class PuzzleSolverGUI(tk.Tk):
         self.algorithm_menu.configure(background="#61AFEF", foreground="#282C34")
 
         # Buttons
-        self.randomize_button = tk.Button(self.right_frame, text="Tạo trạng thái ban đầu", command=self.initial_puzzle, bg="#61AFEF", fg="#282C34", font=("Helvetica", 10, "bold"))
+        self.randomize_button = tk.Button(self.right_frame, text="Tạo trạng thái phức tạp", command=self.initial_puzzle, bg="#61AFEF", fg="#282C34", font=("Helvetica", 10, "bold"))
         self.randomize_button.pack(pady=10, fill="x", padx=20)
+        self.randomize_simple_button = tk.Button(self.right_frame, text="Tạo trạng thái đơn giản", command=self.simple_initial_puzzle, bg="#61AFEF", fg="#282C34", font=("Helvetica", 10, "bold"))
+        self.randomize_simple_button.pack(pady=10, fill="x", padx=20)
         self.start_button = tk.Button(self.right_frame, text="Bắt đầu giải", command=self.solve_puzzle, bg="#98C379", fg="#282C34", font=("Helvetica", 10, "bold"))
         self.start_button.pack(pady=10, fill="x", padx=20)
 
@@ -52,6 +54,10 @@ class PuzzleSolverGUI(tk.Tk):
         self.draw_puzzle()
 
     def initial_puzzle(self):
+        self.puzzle_state = [[2, 6, 5], [0, 8, 7], [4, 3, 1]]
+        self.draw_puzzle()
+
+    def simple_initial_puzzle(self):
         self.puzzle_state = [[1, 2, 3], [0, 4, 5], [7, 8, 6]]
         self.draw_puzzle()
 
