@@ -1,13 +1,15 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 import tracemalloc, timeit
-from PIL import Image, ImageDraw, ImageFont, ImageTk
+from PIL import Image
 import os
 import matplotlib.pyplot as plt
 from ObservableEnvironmet import bfs, dfs, dls, ucs, ids, greedy, astar, ida_star, simple_hill_climbing, steepest_ascent_hill_climbing, stochastic_hill_climbing, simulated_annealing, beam_search, genetic_algorithm
-from And_OrSearch import GraphVisualizer, Puzzle, and_or_search
+from And_OrSearch import and_or_search_solution
 from Backtracking import backtracking_solve, backtracking_solve_with_forward_checking
 from Fill_CSP import backtracking_fill, forward_checking_fill, min_conflict_fill
+from PartiallyObservable import bfs_partially_observable
+from NoObservable import bfs_no_observable
 from ReinforcementLearning import QLearningSolver
 
 class PuzzleSolverGUI(tk.Tk):
@@ -30,7 +32,7 @@ class PuzzleSolverGUI(tk.Tk):
         # Dropdown Menu for Algorithms
         self.algorithm_label = tk.Label(self.right_frame, text="Thuật Toán:", fg="#61AFEF", bg="#2C2C2C", font=("Helvetica", 14, "bold"))
         self.algorithm_label.pack(pady=(20, 10))
-        self.algorithm_options = ["BFS", "DFS", "DLS", "UCS", "IDS", "Greedy", "A Start", "IDA Start", "Simple Hill Climbing", "Steepest Ascent", "Stochastic", "Simulated Annealing", "Beam Search", "Genetic Algorithm", "Backtracking", "Backtracking with Forward Checking", "Fill Backtracking", "Fill Backtracking with Forward Checking", "Min Conflict", "And Or Search", "Q Learning"]
+        self.algorithm_options = ["BFS", "DFS", "DLS", "UCS", "IDS", "Greedy", "A Start", "IDA Start", "Simple Hill Climbing", "Steepest Ascent", "Stochastic", "Simulated Annealing", "Beam Search", "Genetic Algorithm", "And Or Search", "No Observable" ,"Partially Observable", "Backtracking", "Backtracking with Forward Checking", "Fill Backtracking", "Fill Backtracking with Forward Checking", "Min Conflict", "And Or Search", "Q Learning"]
         self.algorithm_var = tk.StringVar()
         self.algorithm_menu = ttk.Combobox(self.right_frame, textvariable=self.algorithm_var, values=self.algorithm_options)
         self.algorithm_menu.pack(pady=10, fill="x", padx=20)
@@ -147,6 +149,10 @@ class PuzzleSolverGUI(tk.Tk):
             self.path = beam_search(self.puzzle_state)
         elif algorithm == 'Genetic Algorithm':
             self.path = genetic_algorithm(self.puzzle_state)
+        elif algorithm == 'No Observable':
+            self.path = bfs_no_observable(self.puzzle_state)
+        elif algorithm == 'Partially Observable':
+            self.path = bfs_partially_observable(self.puzzle_state)
         elif algorithm == 'Backtracking':
             self.path = backtracking_solve(self.puzzle_state)
         elif algorithm == 'Backtracking with Forward Checking':
@@ -161,11 +167,7 @@ class PuzzleSolverGUI(tk.Tk):
             self.puzzle_state = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
             self.path = min_conflict_fill(self.puzzle_state)
         elif algorithm == 'And Or Search':
-            visualizer = GraphVisualizer()
-            root = Puzzle(self.puzzle_state)
-            plan = and_or_search(root, visualizer)
-            if len(visualizer.goal_nodes) > 0:
-                self.path = visualizer.goal_nodes[0].get_path()
+            self.path = and_or_search_solution(self.puzzle_state)
         elif algorithm == 'Q Learning':
             q_solver = QLearningSolver()
             q_solver.train(self.puzzle_state, episodes=500)
@@ -181,15 +183,17 @@ class PuzzleSolverGUI(tk.Tk):
         print(f"Thời gian thực thi thuật toán: {(end_time - start_time):.5f} giây")
         print(f"Bộ nhớ sử dụng: {memory_used / (1024 ** 2):.5f} MB")
         print(f"Bộ nhớ tối đa: {peak_memory / (1024 ** 2):.5f} MB")
-        print("Số bước thực hiện:", len(self.path))
+        
 
         if self.path == []:
             messagebox.showinfo("Info", "Không tìm được lời giải")
-        for state in self.path:
-            self.puzzle_state = state
-            self.draw_puzzle()
-            self.update()
-            self.after(300)
+        else:
+            print("Số bước thực hiện:", len(self.path))
+            for state in self.path:
+                self.puzzle_state = state
+                self.draw_puzzle()
+                self.update()
+                self.after(300)
 
     def export_gif(self):
         algorithm = self.algorithm_var.get()

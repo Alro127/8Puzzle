@@ -131,7 +131,15 @@ def or_search(node, path, visualizer):
             return [action] + plan
     return None
 
+def and_or_search_solution(initial_state):
+    root = Puzzle(initial_state)
+    visualizer = GraphVisualizer()
+    plan = and_or_search(root, visualizer)
 
+    if (len(visualizer.goal_nodes)>0):
+        goal_node = visualizer.goal_nodes[0]
+        return goal_node.get_path()
+    return []
 
 if __name__ == "__main__":
     initial_state = [[1, 2, 0], [4, 5, 3], [7, 8, 6]]

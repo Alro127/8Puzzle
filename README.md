@@ -320,53 +320,69 @@
 # Complex Environment
 ### *Initial State*
 
-    Đầu vào And Or Search
+    Đầu vào phức tạp
+    2 6 5 
+    0 8 7
+    4 3 1
 
-    1 2 0
-    4 5 3
+    Đầu vào đơn giản
+    1 2 3
+    0 4 5
     7 8 6
-
-    Đầu vào Belief State
-
-    1 2 3      1 2 3      1 2 3
-    4 5 6      4 5 0      4 0 6
-    0 7 8      7 6 8      7 5 8
 
 ### *Algorithms*
 * And Or Search
 
-    *Perform*
+    *Perform (Đầu vào đơn giản)*
 
     Thuật toán đã được giới hạn số bước để tranh vượt mức xử lý của bộ nhớ
 
-    ![alt text](and_or_search_tree.png)
+    ![alt text](<And Or Search/And Or Search_solution.gif>)
 
     *Evaluation*
-        Thời gian thực thi thuật toán: 0.03552 giây
-        Bộ nhớ sử dụng: 0.11328 MB
-        Bộ nhớ tối đa: 0.11706 MB
-        Số bước thực hiện: 3
+        Thời gian thực thi thuật toán: 0.04622 giây
+        Bộ nhớ sử dụng: 0.01595 MB
+        Bộ nhớ tối đa: 0.09979 MB
+        Số bước thực hiện: 4
 
-        => Thời gian và không gian bộ nhớ cần cho việc tìm ra lời giải khá ổn 
+        => Thời gian và không gian bộ nhớ cần cho việc tìm ra lời giải tốt 
         => Phù hợp giải khi không biết môi trường cụ thể
+        => Hạn chế đối với đầu vào phức tạp
 
 
-* Belief State Search
+* Search with No Observable
 
     *Perform*
 
-    ![alt text](belief_state_graph.png)
+    ![alt text](<No Observable/No Observable_solution.gif>)
 
     *Evaluation*
 
-        Thời gian thực thi thuật toán: 0.00377 giây
-        Bộ nhớ sử dụng: 0.03170 MB
-        Bộ nhớ tối đa: 0.04247 MB
-        Số bước thực hiện: 3
+        Thời gian thực thi thuật toán: 20.73272 giây
+        Bộ nhớ sử dụng: 0.24125 MB
+        Bộ nhớ tối đa: 209.28929 MB
+        Số bước thực hiện: 24
 
-        => Sử dụng thuật toán tương tự BFS nhưng với nhiều đầu vào
         => Phù hợp cho bài toán không biết môi trường cụ thể, chỉ xác định được các Belief States là các đầu vào niềm tin
+        => Khả năng tìm được lời giải và tối ưu lời giải chịu ảnh hưởng từ tập không gian trạng thái và thuật toán triển khai
+        => Lời giải có thể bị sai so với initial_state ban đầu vì chọn  state trong các belief state khác với real state
 
+* Search with Partially Observable
+    
+    *Perform*
+
+    ![alt text](<Partially Observable/Partially Observable_solution.gif>)
+
+    *Evaluation*
+
+        Thời gian thực thi thuật toán: 55.04831 giây
+        Bộ nhớ sử dụng: 0.23941 MB
+        Bộ nhớ tối đa: 144.02273 MB
+        Số bước thực hiện: 18
+
+        => Hiệu suất về thời gian và không gian bộ nhớ phụ thuộc vào hàm triển khai nhưng sẽ tốt hơn no observable vì giới hạn được belief states thông qua hàm observe
+        => Khả năng tìm được lời giải và tối ưu lời giải chịu ảnh hưởng từ tập không gian trạng thái và thuật toán triển khai
+        => Lời giải có thể bị sai so với initial_state ban đầu vì chọn  state trong các belief state khác với real state
 
 # Constraint Satisfication Problem
 ### *Initial State*
@@ -410,7 +426,7 @@
 
     *Perform (Đầu vào đơn giản)*
 
-    ![alt text](<Fill Backtracking with Forward Checking/Fill Backtracking with Forward Checking_solution.gif>)
+    ![alt text](<Backtracking with Forward Checking/Backtracking with Forward Checking_solution.gif>)
 
     *Evaluation*    
 
