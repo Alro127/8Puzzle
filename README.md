@@ -133,8 +133,8 @@
         => Tối ưu cả thời gian và thời gian tìm kiếm lời giải 
         => Lời giải không tối ưu
     
-    Độ phức tạp thời gian: $$ O(b^m) $$
-    Độ phức tạp không gian: $$ O(b^m) $$
+    Độ phức tạp thời gian: $$ O(b^d) $$
+    Độ phức tạp không gian: $$ O(b^d) $$
     
 * A*
 
@@ -275,7 +275,7 @@
 
         => Thuật toán cho phép tìm trạng thái xấu hơn theo xác suất giảm dần (phụ thuộc hàm thời gian). Do đó, xác suất tìm ra lời giải ở những trạng thái phức tạp không cao
     
-    Độ phức tạp thời gian: $$ O(b^c) $$
+    Độ phức tạp thời gian: $$ O(log(T)b) $$
     Độ phức tạp không gian: $$ O(1) $$
 
 * Beam Search
