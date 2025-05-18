@@ -28,8 +28,11 @@
         => Tốn nhiều thời gian và bộ nhớ để tìm kiếm lời giải
         => Tìm ra được lời giải tối ưu 
     
-    Độ phức tạp thời gian: $$ O(b^d) $$
-    Độ phức tạp không gian: $$ O(b^d) $$
+    Độ phức tạp thời gian: O(b^d)
+  
+    Độ phức tạp không gian: O(b^d)
+
+    Với b là nhánh, d là độ sâu lời giải
 
 * DFS
 
@@ -51,9 +54,12 @@
         => Mất nhiều thời gian và bộ nhớ để tìm ra lời giải
         => Lời giải không tối ưu
     
-    Độ phức tạp thời gian: $$ O(b^m) $$
-    Độ phức tạp không gian: $$ O(bm) $$
+    Độ phức tạp thời gian: O(b^m)
+  
+    Độ phức tạp không gian: O(bm)
 
+    Với b là nhánh, m là độ sâu tối đa của cây
+  
 * DLS
     
     *Perform*
@@ -71,8 +77,11 @@
         => Có thể không tìm được giải pháp nếu limit (l) không đủ lớn
         => Lời giải không tối ưu
     
-    Độ phức tạp thời gian: $$ O(b^l) $$
-    Độ phức tạp không gian: $$ O(bl) $$
+    Độ phức tạp thời gian: O(b^l)
+  
+    Độ phức tạp không gian: O(bl)
+
+    Với b là nhánh, l là giới hạn độ sâu
 
 * UCS
 
@@ -92,8 +101,11 @@
         => Lời giải tối ưu
         => Phù hợp hơn khi chi phí các bước đi có sự khác nhau
 
-    Độ phức tạp thời gian: $$ O(b^{\lceil c^* / \epsilon \rceil + 1}) $$
-    Độ phức tạp không gian: $$ O(b^{\lceil c^* / \epsilon \rceil + 1}) $$
+    Độ phức tạp thời gian: O(b^[c*/↋]+1)
+  
+    Độ phức tạp không gian: O(b^[c*/↋]+1)
+
+    Với b là nhánh, c* là chi phí của lời giải tối ưu, ↋ là chi phí tối thiểu giữa 2 trạng thái
 
 * IDS
 
@@ -112,8 +124,11 @@
         => Không gian cần cho việc thực thi tiết kiệm hơn các thuậ toán trước
         => Lời giải không tối ưu
     
-    Độ phức tạp thời gian: $$ O(b^d) $$
-    Độ phức tạp không gian: $$ O(bd) $$
+    Độ phức tạp thời gian: O(b^d)
+  
+    Độ phức tạp không gian: O(bd)
+
+    Với b là nhánh, d là độ sâu lời giải
 
 # Informed Search
 
@@ -133,8 +148,11 @@
         => Tối ưu cả thời gian và thời gian tìm kiếm lời giải 
         => Lời giải không tối ưu
     
-    Độ phức tạp thời gian: $$ O(b^m) $$
-    Độ phức tạp không gian: $$ O(b^m) $$
+    Độ phức tạp thời gian: O(b^d)
+  
+    Độ phức tạp không gian: O(b^d)
+
+    Với b là nhánh, d là độ sâu lời giải
     
 * A*
 
@@ -152,8 +170,11 @@
         => Tối ưu không gian, thời gian, lời giải
         => Thuật toán phù hợp cho bài toán 8 Puzzle
     
-    Độ phức tạp thời gian: $$ O(b^d) $$
-    Độ phức tạp không gian: $$ O(b^d) $$
+    Độ phức tạp thời gian: O(b^d)
+  
+    Độ phức tạp không gian: O(b^d)
+
+    Với b là nhánh, d là độ sâu lời giải
 
 * IDA*
 
@@ -170,8 +191,11 @@
 
         => Tương tự như A* nhưng tối ưu hơn về bộ nhớ
 
-    Độ phức tạp thời gian: $$ O(b^d) $$
-    Độ phức tạp không gian: $$ O(b) $$
+    Độ phức tạp thời gian: O(b^d)
+  
+    Độ phức tạp không gian: O(b)
+
+    Với b là nhánh, d là độ sâu lời giải
     
 # Local Search
 ### *Initial State*
@@ -209,8 +233,9 @@
         => Không giải được các đầu vào phức tạp vì dễ bị kẹt lại ở những cực đại cục bộ
         => Trong trường hợp giải được, thời gian và không gian dành cho việc tìm ra lời giải khá tối ưu
 
-    Độ phức tạp thời gian: $$ O(b) $$
-    Độ phức tạp không gian: $$ O(1) $$
+    Độ phức tạp thời gian: O(b)
+  
+    Độ phức tạp không gian: O(1)
 
 * Stepest Ascent Hill Climbing
 
@@ -231,8 +256,9 @@
 
         => Tương tự Simple Hill Climbing
     
-    Độ phức tạp thời gian: $$ O(b) $$
-    Độ phức tạp không gian: $$ O(b) $$
+    Độ phức tạp thời gian: O(b)
+  
+    Độ phức tạp không gian: O(b)
 
 * Stochastic Hill Climbing
 
@@ -253,8 +279,9 @@
 
         => Tương tự 2 thuật toán trên
     
-    Độ phức tạp thời gian: $$ O(b) $$
-    Độ phức tạp không gian: $$ O(1) $$
+    Độ phức tạp thời gian: O(b)
+  
+    Độ phức tạp không gian: O(1)
 
 * Simulated Annealing
 
@@ -275,8 +302,11 @@
 
         => Thuật toán cho phép tìm trạng thái xấu hơn theo xác suất giảm dần (phụ thuộc hàm thời gian). Do đó, xác suất tìm ra lời giải ở những trạng thái phức tạp không cao
     
-    Độ phức tạp thời gian: $$ O(b^c) $$
-    Độ phức tạp không gian: $$ O(1) $$
+    Độ phức tạp thời gian: O(log(T)b)
+  
+    Độ phức tạp không gian: O(1)
+
+    Với b là nhánh, log(T) là số lần giảm nhiệt độ
 
 * Beam Search
 
@@ -294,8 +324,9 @@
         => Thời gian và không gian cần để tìm lời giải ở ổn, phụ thuộc vào beam width (k)
         => Không tìm ra lời giải tối ưu
     
-    Độ phức tạp thời gian: $$ O(kb) $$
-    Độ phức tạp không gian: $$ O(k) $$
+    Độ phức tạp thời gian: O(kb)
+  
+    Độ phức tạp không gian: O(k)
 
 * Genetic Algorithm
 
@@ -313,8 +344,9 @@
         => Thoạt nhìn có vẻ là giải được nhưng thật ra đầu vào đã bị thay đổi
         => Thuật toán không phù hợp cho những bài toán mà lời giải có trình tự như 8 Puzzle
 
-    Độ phức tạp thời gian: $$ O(pgb) $$
-    Độ phức tạp không gian: $$ O(p) $$
+    Độ phức tạp thời gian: O(pgb)
+  
+    Độ phức tạp không gian: O(p)
     
 
 # Complex Environment
@@ -414,8 +446,10 @@
         => Tốt về phía không gian bộ nhớ phải sử dụng nhưng thời gian cần để thực hiện thuật toán xấu
         => Lời giải không tối ưu
     
-    Độ phức tạp thời gian: $$ O(d^n) $$
-    Độ phức tạp không gian: $$ O(n) $$
+    Độ phức tạp thời gian: O(d^n)
+  
+    Độ phức tạp không gian: O(n)
+  
     Với d là miền, n là số biến
 
 * Backtracking With Forward Checking
