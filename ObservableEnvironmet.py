@@ -95,7 +95,6 @@ def dfs(start_state):
         if current.is_goal():
             return current.get_path()
         visited.add(current.to_tuple())
-        # if current.depth < limit:
         for neighbor in reversed(current.get_neighbors()):
             if neighbor.to_tuple() not in visited:
                 stack.append(neighbor)
@@ -217,19 +216,23 @@ def ida_star(start_state):
             return []
         threshold = t
 
-# Nhóm thuật toán tìm kiếm cục bộ
 def simple_hill_climbing(start_state):
     current = Puzzle(start_state)
-    while True:
+    
+    while not current.is_goal():
         neighbors = current.get_neighbors()
-        next_node = min(neighbors, key=lambda n: manhattan_distance(n.state), default=None)
-        if next_node and manhattan_distance(next_node.state) < manhattan_distance(current.state):
-            current = next_node
+
+        # Kiểm tra từng neighbor và dừng ngay khi tìm thấy neighbor tốt hơn
+        for neighbor in neighbors:
+            if manhattan_distance(neighbor.state) < manhattan_distance(current.state):
+                current = neighbor
+                break
         else:
+            # Nếu không có neighbor nào tốt hơn, thoát vòng lặp
             break
-        if current.is_goal():
-            return current.get_path()
+
     return current.get_path() if current.is_goal() else []
+
 
 
 def steepest_ascent_hill_climbing(start_state):
